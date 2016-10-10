@@ -20,8 +20,8 @@ if data:
         if (l[1] == 'groupname'): # nice headers
             print ("\n    "+l[2]+"\n    ---")
         else:
-            danie = l[2].split(' ')
-            print ("    {:<36} {:<5}{:>5}".format(u' '.join(danie[:-1]), danie[-1], l[3]))
+            first_num_pos = next(re.finditer('\d+', l[2], )).regs[0][0]
+            print ("    {:<38} {:<10}{:>5}".format(l[2][:first_num_pos], l[2][first_num_pos:], l[3]))
 else:
     print ("Stołówka jest zamknięta :(")
 
